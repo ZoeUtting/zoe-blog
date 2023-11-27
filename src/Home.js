@@ -12,7 +12,7 @@ const Home = () => {
     setBlogs(newBlogs);
  }
     return ( 
-        <div className="homepage">
+        <div className="homepages">
         <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete}/>
         {/* <BlogList blogs={blogs.filter((blog) => blog.author === "mario" )} title="Marios Stuff"/> */}
         </div>

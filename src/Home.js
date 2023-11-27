@@ -8,9 +8,10 @@ const Home = () => {
  { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'mario', id: 3 }]);
     return ( 
         <div className="homepage">
-        <BlogList blogs={blogs} title="Zoes Blogs"/>
+        <BlogList blogs={blogs} title="All Blogs"/>
+        <BlogList blogs={blogs.filter((blog) => blog.author === "mario" )} title="Marios Stuff"/>
         </div>
      );
 }
  
-export default Home;
+export default Home; 

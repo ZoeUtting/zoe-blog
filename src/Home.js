@@ -1,31 +1,34 @@
-
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 const Home = () => {
- const [blogs, setBlogs]= useState(null);
- 
- 
- const handleDelete = (id) =>{
-    const newBlogs = blogs.filter((blog) => blog.id !== id);
-    setBlogs(newBlogs);
- }
- useEffect(() => {
-   fetch('http://localhost:8000/blogs')
-   .then(res => {
-      return res.json()
-   })
-   .then((data) => {
-console.log(data);
-setBlogs(data)
-   })
- }, []);
+  const [blogs, setBlogs] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-    return ( 
-        <div className="homepage">
-        {blogs && <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete}/>}
+  //  const handleDelete = (id) =>{
+  //     const newBlogs = blogs.filter((blog) => blog.id !== id);
+  //     setBlogs(newBlogs);
+  //  }
 
-        </div>
-     );
-}
- 
-export default Home; 
+  useEffect(() => {
+    setTimeout(() => {
+      fetch("http://localhost:8000/blogs")
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          console.log(data);
+          setBlogs(data);
+          setIsLoading(false);
+        });
+    }, 1000);
+  }, []);
+
+  return (
+    <div className="homepage">
+      {isLoading && <div>LOADING</div>}
+      {blogs && <BlogList blogs={blogs} title="All Blogs" />}
+    </div>
+  );
+};
+
+export default Home;

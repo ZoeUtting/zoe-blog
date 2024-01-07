@@ -1,14 +1,18 @@
+import {Link} from 'react-router-dom';
+
+
+
 const Navbar = () => {
     return (
         <nav className="navbar">
             <h1>zoe blog</h1>
             <div className="link">
-                <a href="/">Home</a>
-                <a href="/create" style={{
+                <Link to="/">Home</Link>
+                <Link to="/create" style={{
                     color: "white", 
                     backgroundColor: "#f1356d",
                     borderRadius: "8px"
-                }}>New Blog</a>
+                }}>New Blog</Link>
             </div>
         </nav>
       );
